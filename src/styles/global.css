@@ -202,7 +202,7 @@ a:hover {
   }
 
   .card {
-    min-height: 0;
+    min-height: auto;
     aspect-ratio: 85 / 55;
     padding: 44px 64px 56px;
     box-shadow: 0 48px 90px -24px rgb(104 31 23 / 0.55);
@@ -225,7 +225,7 @@ a:hover {
     flex-direction: row;
     align-items: center;
     gap: 48px;
-    padding: 24px 0;
+    padding: 16px 0;
   }
 
   .lead-text {
