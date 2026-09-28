@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "foxcompany-www",
+  "compatibility_date": "2026-09-28",
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "foxcompany.pl", "custom_domain": true },
+    { "pattern": "www.foxcompany.pl", "custom_domain": true }
+  ]
+}
