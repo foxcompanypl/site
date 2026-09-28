@@ -1,0 +1,13 @@
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  site: 'https://foxcompany.pl',
+  trailingSlash: 'always',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'pl'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
+});
