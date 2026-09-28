@@ -22,10 +22,10 @@ pnpm preview
 
 ```sh
 pnpm exec wrangler login
-pnpm deploy
+pnpm run deploy
 ```
 
-`wrangler.jsonc` binds the Worker to `foxcompany.pl` and `www.foxcompany.pl` as custom domains. On the first deploy Wrangler asks to replace the existing DNS records for those hostnames; confirm to move traffic to the Worker.
+`wrangler.jsonc` binds the Worker to `foxcompany.pl` and `www.foxcompany.pl` as custom domains. Before the first deploy, delete any A, AAAA or CNAME records for those hostnames in the Cloudflare DNS panel; Wrangler refuses to bind a custom domain over externally managed records.
 
 ## Content
 
