@@ -1,12 +1,12 @@
 :root {
-  --ground: #1e3328;
-  --paper: #f7f3ec;
-  --ink: #1a1712;
-  --ink-soft: #3e3831;
-  --muted: #6a635a;
-  --rule: #ddd5c8;
-  --accent: #f26835;
-  --link: #b8400f;
+  --ground: #ef3e38;
+  --paper: #ffffff;
+  --ink: #681f17;
+  --ink-soft: #7d4a43;
+  --muted: #96665f;
+  --rule: #f3e1de;
+  --accent: #ef3e38;
+  --link: #c8261f;
   --font: 'Bricolage Grotesque Variable', system-ui, sans-serif;
 }
 
@@ -39,7 +39,7 @@ a:hover {
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--ink);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -55,8 +55,8 @@ a:hover {
   width: min(1000px, 100%);
   min-height: calc(100dvh - 32px);
   background: var(--paper);
-  border-radius: 14px;
-  box-shadow: 0 32px 60px -20px rgb(6 14 10 / 0.7);
+  border-radius: 24px;
+  box-shadow: 0 32px 60px -20px rgb(104 31 23 / 0.5);
   padding: 24px 24px 28px;
   display: flex;
   flex-direction: column;
@@ -65,22 +65,31 @@ a:hover {
 .card-head {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   gap: 16px;
 }
 
 .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.01em;
   font-variation-settings: 'opsz' 24;
+  color: var(--ink);
+}
+
+.wordmark img {
+  width: 22px;
+  height: 32px;
 }
 
 .lang {
   display: flex;
   gap: 16px;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .lang a {
@@ -103,16 +112,22 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 28px;
+  padding: 28px 0;
+}
+
+.lead-text {
+  display: flex;
+  flex-direction: column;
   gap: 20px;
-  padding: 24px 0;
 }
 
 .lead h1 {
   margin: 0;
-  font-size: clamp(40px, 2rem + 2.6vw, 68px);
+  font-size: clamp(38px, 1.8rem + 2.6vw, 64px);
   line-height: 1.04;
-  font-weight: 500;
-  letter-spacing: -0.025em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   font-variation-settings: 'opsz' 96;
   max-width: 12em;
   text-wrap: balance;
@@ -124,6 +139,12 @@ a:hover {
   line-height: 1.5;
   color: var(--ink-soft);
   max-width: 30em;
+}
+
+.badge {
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
 }
 
 .card-foot {
@@ -142,13 +163,13 @@ a:hover {
 .card-foot h2 {
   margin: 0;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--muted);
 }
 
 .email {
   font-size: 19px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.01em;
   overflow-wrap: anywhere;
 }
@@ -183,12 +204,17 @@ a:hover {
   .card {
     min-height: 0;
     aspect-ratio: 85 / 55;
-    padding: 52px 64px 56px;
-    box-shadow: 0 48px 90px -24px rgb(6 14 10 / 0.7);
+    padding: 44px 64px 56px;
+    box-shadow: 0 48px 90px -24px rgb(104 31 23 / 0.55);
   }
 
   .wordmark {
     font-size: 22px;
+  }
+
+  .wordmark img {
+    width: 26px;
+    height: 38px;
   }
 
   .lang {
@@ -196,11 +222,24 @@ a:hover {
   }
 
   .lead {
-    gap: 28px;
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+    padding: 24px 0;
+  }
+
+  .lead-text {
+    flex-grow: 1;
+    gap: 24px;
   }
 
   .lead p {
     font-size: 19px;
+  }
+
+  .badge {
+    width: 260px;
+    height: 260px;
   }
 
   .card-foot {

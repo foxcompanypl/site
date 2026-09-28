@@ -15,6 +15,7 @@ const organization = {
   name: company.name,
   legalName: company.legalName,
   url: company.url,
+  logo: `${company.url}/logo.svg`,
   email: company.email,
   taxID: company.nip,
   address: { '@type': 'PostalAddress', addressCountry: company.countryCode },
@@ -24,7 +25,10 @@ const organization = {
 <main class="ground">
   <article class="card">
     <header class="card-head">
-      <span class="wordmark">{company.name}</span>
+      <span class="wordmark">
+        <img src="/fox.svg" alt="" width="26" height="38" />
+        {company.name.toLowerCase()}
+      </span>
       <nav class="lang" aria-label={t.languageNav}>
         {
           locales.map((l) => (
@@ -42,8 +46,11 @@ const organization = {
     </header>
 
     <div class="lead">
-      <h1>{t.headline}</h1>
-      <p>{t.intro}</p>
+      <img class="badge" src="/logo.svg" alt={company.name} width="260" height="260" />
+      <div class="lead-text">
+        <h1>{t.headline}</h1>
+        <p>{t.intro}</p>
+      </div>
     </div>
 
     <footer class="card-foot">

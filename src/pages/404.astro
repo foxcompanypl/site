@@ -8,7 +8,10 @@ import { company, copy } from '../data/site';
   <main class="ground">
     <article class="card">
       <header class="card-head">
-        <span class="wordmark">{company.name}</span>
+        <span class="wordmark">
+          <img src="/fox.svg" alt="" width="26" height="38" />
+          {company.name.toLowerCase()}
+        </span>
       </header>
       <div class="lead">
         <h1>{copy.en.notFound}</h1>
