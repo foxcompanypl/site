@@ -5,24 +5,24 @@ Company business card site. Astro, static output, served as a Cloudflare Worker 
 ## Develop
 
 ```sh
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 ## Build and preview locally
 
 ```sh
-npm run build
-npm run preview
+pnpm build
+pnpm preview
 ```
 
-`npm run preview` runs `wrangler dev` against the built `dist/` folder, the same way the Worker serves it in production.
+`pnpm preview` runs `wrangler dev` against the built `dist/` folder, the same way the Worker serves it in production.
 
 ## Deploy
 
 ```sh
-npx wrangler login
-npm run deploy
+pnpm exec wrangler login
+pnpm deploy
 ```
 
 `wrangler.jsonc` binds the Worker to `foxcompany.pl` and `www.foxcompany.pl` as custom domains. On the first deploy Wrangler asks to replace the existing DNS records for those hostnames; confirm to move traffic to the Worker.
