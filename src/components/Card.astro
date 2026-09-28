@@ -74,15 +74,13 @@ const organization = {
           <dd>{company.nip}</dd>
           <dt>{t.fields.regon}</dt>
           <dd>{company.regon}</dd>
-          <dt>{t.fields.address}</dt>
-          <dd>
-            {company.street}<br />
-            {company.postalCode} {company.city}
-          </dd>
           <dt>{t.fields.country}</dt>
           <dd>{t.country}</dd>
         </dl>
       </section>
+      <p class="fine-print">
+        {company.legalName}, {company.street}, {company.postalCode} {company.city}
+      </p>
     </footer>
   </article>
 </main>
