@@ -1,0 +1,27 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import Base from '../layouts/Base.astro';
+import { company, copy } from '../data/site';
+---
+
+<Base locale="en" title={`${copy.en.notFound}, ${company.name}`} noindex>
+  <main class="ground">
+    <article class="card">
+      <header class="card-head">
+        <span class="wordmark">{company.name}</span>
+      </header>
+      <div class="lead">
+        <h1>{copy.en.notFound}</h1>
+        <p lang="pl">{copy.pl.notFound}</p>
+      </div>
+      <footer class="card-foot">
+        <section>
+          <a class="email" href={getRelativeLocaleUrl('en')}>{copy.en.backHome}</a>
+        </section>
+        <section>
+          <a class="email" href={getRelativeLocaleUrl('pl')} hreflang="pl" lang="pl">{copy.pl.backHome}</a>
+        </section>
+      </footer>
+    </article>
+  </main>
+</Base>

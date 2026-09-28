@@ -1,0 +1,47 @@
+---
+import '@fontsource-variable/bricolage-grotesque/opsz.css';
+import '../styles/global.css';
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
+import { company, copy, type Locale } from '../data/site';
+
+interface Props {
+  locale: Locale;
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const {
+  locale,
+  title = copy[locale].title,
+  description = copy[locale].description,
+  noindex = false,
+} = Astro.props;
+
+const canonical = getAbsoluteLocaleUrl(locale);
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    <link rel="alternate" hreflang="en" href={getAbsoluteLocaleUrl('en')} />
+    <link rel="alternate" hreflang="pl" href={getAbsoluteLocaleUrl('pl')} />
+    <link rel="alternate" hreflang="x-default" href={getAbsoluteLocaleUrl('en')} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#1e3328" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={company.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={locale === 'pl' ? 'pl_PL' : 'en_US'} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

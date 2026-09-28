@@ -1,0 +1,72 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { company, copy, languageNames, locales, type Locale } from '../data/site';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = copy[locale];
+
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: company.name,
+  legalName: company.legalName,
+  url: company.url,
+  email: company.email,
+  taxID: company.nip,
+  address: { '@type': 'PostalAddress', addressCountry: company.countryCode },
+};
+---
+
+<main class="ground">
+  <article class="card">
+    <header class="card-head">
+      <span class="wordmark">{company.name}</span>
+      <nav class="lang" aria-label={t.languageNav}>
+        {
+          locales.map((l) => (
+            <a
+              href={getRelativeLocaleUrl(l)}
+              hreflang={l}
+              lang={l}
+              aria-current={l === locale ? 'page' : undefined}
+            >
+              {languageNames[l]}
+            </a>
+          ))
+        }
+      </nav>
+    </header>
+
+    <div class="lead">
+      <h1>{t.headline}</h1>
+      <p>{t.intro}</p>
+    </div>
+
+    <footer class="card-foot">
+      <section>
+        <h2>{t.contact}</h2>
+        <a class="email" href={`mailto:${company.email}`}>{company.email}</a>
+        <span class="domain">{company.domain}</span>
+      </section>
+      <section>
+        <h2>{t.registry}</h2>
+        <dl>
+          <dt>{t.fields.name}</dt>
+          <dd>{company.legalName}</dd>
+          <dt>{t.fields.nip}</dt>
+          <dd>{company.nip}</dd>
+          <dt>{t.fields.regon}</dt>
+          <dd>{company.regon}</dd>
+          <dt>{t.fields.country}</dt>
+          <dd>{t.country}</dd>
+        </dl>
+      </section>
+    </footer>
+  </article>
+</main>
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(organization)} />
