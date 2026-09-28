@@ -18,7 +18,13 @@ const organization = {
   logo: `${company.url}/logo.svg`,
   email: company.email,
   taxID: company.nip,
-  address: { '@type': 'PostalAddress', addressCountry: company.countryCode },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: company.street,
+    postalCode: company.postalCode,
+    addressLocality: company.city,
+    addressCountry: company.countryCode,
+  },
 };
 ---
 
@@ -68,6 +74,11 @@ const organization = {
           <dd>{company.nip}</dd>
           <dt>{t.fields.regon}</dt>
           <dd>{company.regon}</dd>
+          <dt>{t.fields.address}</dt>
+          <dd>
+            {company.street}<br />
+            {company.postalCode} {company.city}
+          </dd>
           <dt>{t.fields.country}</dt>
           <dd>{t.country}</dd>
         </dl>
